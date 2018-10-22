@@ -1,0 +1,78 @@
+* {
+  font-family: Open Sans, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* nav bar */
+nav {
+  background-color: #524649;
+  display: flex;
+  justify-content: space-between;
+}
+
+.page-title-purple {
+  color: #afa5cd;
+  font-weight: 800;
+  padding-left: 25px;
+
+}
+
+.page-title-white {
+  color: #FFFFFF; 
+  font-weight: 800;
+  padding-left: 4px;
+}
+
+.search-form {
+  display: flex;
+  padding: 25px;
+
+
+}
+
+#search-input {
+  border: none;
+  border-radius: 5px 0px 0px 5px;
+  width: 100%;
+}
+
+.search-button {
+  background-color: #C2C1C0;
+  border: none;
+  border-radius: 0px 5px 5px 0px;
+
+}
+
+.fa-search {
+  color: #FFFFFF;
+  padding: 6px;
+}
+
+/* header */
+
+header {
+  background-color: #EAEAEA;
+}
+
+.idea-form {
+
+}
+
+#title-input {
+
+}
+
+#body-input {
+
+}
+
+.save-button {
+
+}
+
+/* article */
+
+article {
+
+}
