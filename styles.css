@@ -15,7 +15,6 @@ nav {
   color: #afa5cd;
   font-weight: 800;
   padding-left: 25px;
-
 }
 
 .page-title-white {
@@ -27,14 +26,13 @@ nav {
 .search-form {
   display: flex;
   padding: 25px;
-
-
 }
 
 #search-input {
   border: none;
   border-radius: 5px 0px 0px 5px;
   width: 100%;
+  color: #8A8494;
 }
 
 .search-button {
@@ -53,10 +51,8 @@ nav {
 
 header {
   background-color: #EAEAEA;
-  height: 40vh;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-
 }
 
 label {
@@ -72,8 +68,8 @@ label {
 
 #title-input {
   width: 100%;
-  height: 10%;
-  margin-bottom: 10px;
+  height: 4vh;
+  margin-bottom: 18px;
   margin-top: 5px;
   border-radius: 5px;
   border-style: solid;
@@ -83,8 +79,8 @@ label {
 
 #body-input {
   width: 100%;
-  height: 20%;
-  margin-bottom: 10px;
+  height: 8vh;
+  margin-bottom: 18px;
   margin-top: 5px;
   border-radius: 5px;
   border-style: solid; 
@@ -94,18 +90,66 @@ label {
 
 .save-button {
   width: 100%;
-  height: 10%;
+  height: 4vh;
   background-color: #5E5C6B;
   border-radius: 5px;
   border-style: solid;
   color: #FFFFFF;
   font-weight: 700;
   letter-spacing: 1px;
+  margin-bottom: 20px;
 }
 
 /* article */
 
 article {
   background-color: #F9F9FA;
-
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
 }
+
+.idea-card {
+  grid-column: 2/3;
+  border-radius: 5px;
+  border: solid 2px #d4d2d8; 
+  background-color: #FFFFFF;
+  margin: 18px 0px;
+  height: 14vh;
+}
+
+.card-content {
+  height: 10vh;
+}
+
+.idea-title {
+  color: #6E646B;
+  font-weight: 700;
+}
+
+.idea-body {
+  color: #7C7879;
+  font-weight: 300;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  border-top: solid 2px #d4d2d8;
+  /*padding: 5px;*/
+  height: 4vh;
+  align-items: center;
+}
+
+.icon-size {
+  height: 18px;
+  width: 18px;
+  padding: 0px 3px;
+}
+
+.quality-text {
+  color: #7C7879;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+
