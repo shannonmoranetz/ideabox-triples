@@ -85,7 +85,6 @@ label {
   border-radius: 5px;
   border-style: solid; 
   border-color: #d4d2d8;
-
 }
 
 .save-button {
@@ -95,7 +94,7 @@ label {
   border-radius: 5px;
   border-style: solid;
   color: #FFFFFF;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 1px;
   margin-bottom: 20px;
 }
@@ -123,12 +122,14 @@ article {
 
 .idea-title {
   color: #6E646B;
-  font-weight: 700;
+  font-weight: 800;
+  padding: 10px;
 }
 
 .idea-body {
   color: #7C7879;
   font-weight: 300;
+  padding-left: 10px;
 }
 
 footer {
@@ -137,19 +138,31 @@ footer {
   border-top: solid 2px #d4d2d8;
   /*padding: 5px;*/
   height: 4vh;
+}
+
+.vote {
+  display: flex;
   align-items: center;
 }
 
 .icon-size {
   height: 18px;
   width: 18px;
-  padding: 0px 3px;
+  margin-right: 10px;
 }
 
-.quality-text {
+.downvote-icon {
+  margin-left: 10px;
+}
+
+.quality-text, .quality-category {
   color: #7C7879;
   font-weight: 600;
   font-size: 14px;
 }
 
+.delete {
+  display: flex;
+  align-items: center;
+}
 
