@@ -1,8 +1,3 @@
-
-// var doc query title input, body input
-// event listener for save button 
-// createElement for new idea in response to save button
-
 // global variables 
 
 var titleInput = document.getElementById('title-input');
@@ -12,10 +7,11 @@ var saveButton = document.querySelector('.save-button');
 // event listeners
 
 // click save button
-saveButton.addEventListener('click', function(e) {
+saveButton.addEventListener('click', function(e){
   e.preventDefault();
-  addIdeaCard();
+  instanceProperties();
 });
+
 
 // click delete button
 document.getElementById('card-article').addEventListener('click', function(e) {
@@ -24,41 +20,22 @@ document.getElementById('card-article').addEventListener('click', function(e) {
   }
 });
 
-// functions 
-
-// function to set storage
-function storeTitleInput() {
-  var storedTitleInput = localStorage.setItem('')
+function instanceProperties() {
+  var idea = new Idea(titleInput, bodyInput);
+  populateIdeaCard(idea);
+  console.log(idea);
 }
 
-
-// function to delete storage 
-
-// function to clear all storage
-
-
-// class Card {
-//   constructor() {
-//     this.time = new Date();
-//     // this.quality =
-//   } 
-//   addIdeaCard(); 
-// }
-
 // function to create card
-function addIdeaCard() {
+function populateIdeaCard(idea) {
   var card = document.createElement('section');
   var cardArticle = document.getElementById('card-article');
-  var cardTimeStamp = new Date();
-  // we need to stringify this
-  localStorage.setItem([i], 'cardTimeStamp')
   card.className = 'idea-card';
-  console.log(cardTimeStamp);
-
+  JSON.stringify(idea);
   card.innerHTML = 
-    ` <div class="card-content">
-        <h2 class="idea-title">${titleInput.value}</h2>
-        <h4 class="idea-body">${bodyInput.value}</h4>
+    ` <div class="card-content" id=${idea.id}>
+        <h2 class="idea-title">${idea.title}</h2>
+        <h4 class="idea-body">${idea.body}</h4>
       </div>
       <footer>
         <div class="vote">
