@@ -7,12 +7,7 @@
 
 var titleInput = document.getElementById('title-input');
 var bodyInput = document.getElementById('body-input');
-
 var saveButton = document.querySelector('.save-button');
-
-
-var ideaTitle = document.querySelector('.idea-title');
-var ideaBody = document.querySelector('.idea-body');
 
 // event listeners
 
@@ -27,16 +22,39 @@ document.getElementById('card-article').addEventListener('click', function(e) {
   if (e.target.className === 'icon-size delete-icon') {
     e.target.parentNode.parentNode.parentNode.remove();
   }
-
 });
 
 // functions 
+
+// function to set storage
+function storeTitleInput() {
+  var storedTitleInput = localStorage.setItem('')
+}
+
+
+// function to delete storage 
+
+// function to clear all storage
+
+
+// class Card {
+//   constructor() {
+//     this.time = new Date();
+//     // this.quality =
+//   } 
+//   addIdeaCard(); 
+// }
 
 // function to create card
 function addIdeaCard() {
   var card = document.createElement('section');
   var cardArticle = document.getElementById('card-article');
+  var cardTimeStamp = new Date();
+  // we need to stringify this
+  localStorage.setItem([i], 'cardTimeStamp')
   card.className = 'idea-card';
+  console.log(cardTimeStamp);
+
   card.innerHTML = 
     ` <div class="card-content">
         <h2 class="idea-title">${titleInput.value}</h2>
