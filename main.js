@@ -21,17 +21,27 @@ document.getElementById('card-article').addEventListener('click', function(e) {
 });
 
 function instanceProperties() {
-  var idea = new Idea(titleInput, bodyInput);
+  var idea = new Idea(titleInput.value, bodyInput.value);
+  idea.setToStorage();
   populateIdeaCard(idea);
   console.log(idea);
 }
+
+function getStorage() {
+ Object.keys(localStorage).forEach(function(key){
+  console.log(JSON.parse(localStorage.getItem(key)));
+  populateIdeaCard(JSON.parse(localStorage.getItem(key)));
+  
+ });
+}
+
+getStorage();
 
 // function to create card
 function populateIdeaCard(idea) {
   var card = document.createElement('section');
   var cardArticle = document.getElementById('card-article');
   card.className = 'idea-card';
-  JSON.stringify(idea);
   card.innerHTML = 
     ` <div class="card-content" id=${idea.id}>
         <h2 class="idea-title">${idea.title}</h2>

@@ -5,4 +5,8 @@ class Idea {
     this.body = body;
     this.quality = 'Swill';
   } 
+
+  setToStorage() {
+   localStorage.setItem(this.id, JSON.stringify(this));
+  }  
 }
