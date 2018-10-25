@@ -26,7 +26,8 @@ document.getElementById('card-article').addEventListener('click', function(e) {
 function instanceProperties() {
   var idea = new Idea(titleInput.value, bodyInput.value);
   idea.setToStorage(); 
-  ideaArray.push(JSON.parse(localStorage.getItem(idea.id))); 
+  ideaArray.push(idea);
+  // ideaArray.push(JSON.parse(localStorage.getItem(idea.id))); 
   localStorage.setItem('ideaArray', JSON.stringify(ideaArray));
   var storedArray = JSON.parse(localStorage.getItem('ideaArray'));
 
@@ -40,7 +41,12 @@ function reloadCards() {
 
   Object.keys(localStorage).forEach(function(key){
   populateIdeaCard(JSON.parse(localStorage.getItem(key)));
-  })
+ ideaArray.push(JSON.parse(localStorage.getItem(key)));
+  });
+
+ ideaArray = ideaArray.map(function(ideaObj) {
+  return new Idea(ideaObj.id, ideaObj.title, ideaObj.body)
+ });
 };
 
 // function to create card

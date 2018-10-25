@@ -1,10 +1,9 @@
 class Idea {
-  constructor(title, body) {
-    this.id = Date.now();
+  constructor(id, title, body) {
+    this.id = Date.now() || id;
     this.title = title;
     this.body = body;
     this.quality = 'Swill';
-    // quality array based on index values
   } 
 
   setToStorage() {
