@@ -9,4 +9,17 @@ class Idea {
   setToStorage() {
    localStorage.setItem(this.id, JSON.stringify(this));
   }  
-}
+
+// deleteFromStorage
+
+// function deleteKey() {
+//   Object.keys(localStorage).forEach(function(key) {
+//     localStorage.removeItem(key);
+//   })
+// }
+
+// updateSelf
+
+// updateQuality
+
+};

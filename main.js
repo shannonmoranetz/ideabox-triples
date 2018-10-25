@@ -1,8 +1,9 @@
 // global variables 
-
 var titleInput = document.getElementById('title-input');
 var bodyInput = document.getElementById('body-input');
 var saveButton = document.querySelector('.save-button');
+
+getStorage();
 
 // event listeners
 
@@ -17,25 +18,27 @@ saveButton.addEventListener('click', function(e){
 document.getElementById('card-article').addEventListener('click', function(e) {
   if (e.target.className === 'icon-size delete-icon') {
     e.target.parentNode.parentNode.parentNode.remove();
+    deleteKey();
   }
 });
+
+var ideaArray = []
 
 function instanceProperties() {
   var idea = new Idea(titleInput.value, bodyInput.value);
   idea.setToStorage();
+  ideaArray.push(idea);
   populateIdeaCard(idea);
   console.log(idea);
 }
 
+
 function getStorage() {
- Object.keys(localStorage).forEach(function(key){
+  Object.keys(localStorage).forEach(function(key){
   console.log(JSON.parse(localStorage.getItem(key)));
   populateIdeaCard(JSON.parse(localStorage.getItem(key)));
-  
- });
-}
-
-getStorage();
+  })
+};
 
 // function to create card
 function populateIdeaCard(idea) {
