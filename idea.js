@@ -4,22 +4,27 @@ class Idea {
     this.title = title;
     this.body = body;
     this.quality = 'Swill';
+    // quality array based on index values
   } 
 
   setToStorage() {
    localStorage.setItem(this.id, JSON.stringify(this));
   }  
 
-// deleteFromStorage
+deleteFromStorage() {
+    localStorage.removeItem(this.id);
+  } 
 
-// function deleteKey() {
-//   Object.keys(localStorage).forEach(function(key) {
-//     localStorage.removeItem(key);
-//   })
-// }
 
 // updateSelf
 
 // updateQuality
 
 };
+
+// 1. local storage items into array
+// 2. delete array items
+
+// findindex of && splice for array values
+
+// 3. quality functionality & new quality array
