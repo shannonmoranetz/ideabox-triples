@@ -1,9 +1,9 @@
 class Idea {
-  constructor(title, body, id) {
+  constructor(title, body, id, quality) {
     this.id = id || Date.now();
     this.title = title;
     this.body = body;
-    this.quality = 'Swill';
+    this.quality = ['Swill', 'Plausible', 'Genius'];
   } 
 
   setToStorage() {
@@ -14,9 +14,23 @@ class Idea {
     localStorage.removeItem(this.id);
   } 
 
+  updateQuality(quality) {
+    if (this.quality[0]) {
+      console.log(this.quality[1]);
+      return this.quality[1];
+    } 
+    else if (this.quality[1]) {
+      return this.quality[2];
+      console.log(this.quality[2]);
+    } else {
+      return;
+    }
+    // this.quality[quality]++;
+    // this.assignedQuality.quality++;
+  }
+
 // updateSelf
 
-// updateQuality
 
 };
 

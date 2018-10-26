@@ -1,25 +1,27 @@
 // global variables 
 var titleInput = document.getElementById('title-input');
 var bodyInput = document.getElementById('body-input');
-var saveButton = document.querySelector('.save-button');
 var ideaForm = document.querySelector('.idea-form');
-
 
 reloadCards();
 
 // click save button
-saveButton.addEventListener('click', function(e){
+document.querySelector('.save-button').addEventListener('click', function(e){
   e.preventDefault();
   instanceProperties();
   ideaForm.reset();
 });
+
+// event listeners on up/down votes 
+// change the index of the qualityArray
+
 
 // click delete button
 document.getElementById('card-article').addEventListener('click', function(e) {
   if (e.target.className === 'icon-size delete-icon') {
     var id = e.target.parentNode.parentNode.parentNode.children[0].dataset.index;
     var idea = JSON.parse(localStorage.getItem(id));
-    var ideaMethods = new Idea('', '', id);
+    var ideaMethods = new Idea('', '', id, '');
     ideaMethods.deleteFromStorage();
     e.target.parentNode.parentNode.parentNode.remove();
   }
@@ -38,6 +40,13 @@ function reloadCards() {
   });
 };
 
+document.querySelector('.upvote-icon').addEventListener('click', function(index) {
+    var assignedValue = new Idea();
+    assignedValue.updateQuality();
+    
+    console.log(assignedValue);
+  });
+
 // function to create card
 function populateIdeaCard(idea) {
   var card = document.createElement('section');
@@ -51,9 +60,9 @@ function populateIdeaCard(idea) {
       <footer>
         <div class="vote">
           <img class="icon-size downvote-icon"src="images/downvote.svg">
-          <img class="icon-size" src="images/upvote.svg">
+          <img class="icon-size upvote-icon" src="images/upvote.svg">
           <span class="quality-text">Quality:&nbsp;</span>
-          <span class="quality-category">Swill</span>
+          <span class="quality-category">${idea.quality[0]}</span>
         </div>
         <div class="delete">
           <img class="icon-size delete-icon" src="images/delete.svg">

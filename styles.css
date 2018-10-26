@@ -153,6 +153,18 @@ footer {
   margin-left: 10px;
 }
 
+.downvote-icon:hover {
+  cursor: pointer;
+}
+
+.upvote-icon {
+  
+}
+
+.upvote-icon:hover {
+  cursor: pointer;
+}
+
 .quality-text, .quality-category {
   color: #7C7879;
   font-weight: 600;
