@@ -1,19 +1,18 @@
 class Idea {
-  constructor(id, title, body) {
-    this.id = Date.now() || id;
+  constructor(title, body, id) {
+    this.id = id || Date.now();
     this.title = title;
     this.body = body;
     this.quality = 'Swill';
   } 
 
   setToStorage() {
-   localStorage.setItem(this.id, JSON.stringify(this));
+    localStorage.setItem(this.id, JSON.stringify(this));
   }  
 
-deleteFromStorage() {
+  deleteFromStorage() {
     localStorage.removeItem(this.id);
   } 
-
 
 // updateSelf
 
@@ -21,9 +20,5 @@ deleteFromStorage() {
 
 };
 
-// 1. local storage items into array
-// 2. delete array items
-
-// findindex of && splice for array values
-
-// 3. quality functionality & new quality array
+// utilize debugger!! to stop function in it's tracks 
+// and see where the methods aren't being used anymore
