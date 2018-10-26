@@ -39,7 +39,6 @@ nav {
   background-color: #C2C1C0;
   border: none;
   border-radius: 0px 5px 5px 0px;
-
 }
 
 .fa-search {
@@ -63,7 +62,6 @@ label {
 .idea-form {
   padding-top: 20px;
   grid-column: 2/3;
-
 }
 
 #title-input {
@@ -74,7 +72,6 @@ label {
   border-radius: 5px;
   border-style: solid;
   border-color: #d4d2d8;
-
 }
 
 #body-input {
@@ -132,11 +129,12 @@ article {
   padding-left: 10px;
 }
 
+
+
 footer {
   display: flex;
   justify-content: space-between;
   border-top: solid 2px #d4d2d8;
-  /*padding: 5px;*/
   height: 4vh;
 }
 
@@ -164,5 +162,6 @@ footer {
 .delete {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
