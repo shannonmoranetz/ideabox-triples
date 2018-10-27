@@ -41,6 +41,10 @@ nav {
   border-radius: 0px 5px 5px 0px;
 }
 
+.search-button:hover {
+  cursor: pointer;
+}
+
 .fa-search {
   color: #FFFFFF;
   padding: 6px;
@@ -94,6 +98,10 @@ label {
   font-weight: 800;
   letter-spacing: 1px;
   margin-bottom: 20px;
+}
+
+.save-button:hover {
+  cursor: pointer;
 }
 
 /* article */
