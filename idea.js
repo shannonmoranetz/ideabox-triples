@@ -3,8 +3,8 @@ class Idea {
     this.id = id || Date.now();
     this.title = title;
     this.body = body;
-    this.quality = ['Swill', 'Plausible', 'Genius'];
-  } 
+    this.quality = quality || 0;
+  }
 
   setToStorage() {
     localStorage.setItem(this.id, JSON.stringify(this));

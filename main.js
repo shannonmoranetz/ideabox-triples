@@ -2,6 +2,7 @@
 var titleInput = document.getElementById('title-input');
 var bodyInput = document.getElementById('body-input');
 var ideaForm = document.querySelector('.idea-form');
+var qualityArray = ['Swill', 'Plausible', 'Genius'];
 
 reloadCards();
 
@@ -20,17 +21,17 @@ document.querySelector('.save-button').addEventListener('click', function(e){
 document.getElementById('card-article').addEventListener('click', function(e) {
   if (e.target.className === 'icon-size delete-icon') {
     var id = e.target.parentNode.parentNode.parentNode.children[0].dataset.index;
-    var idea = JSON.parse(localStorage.getItem(id));
-    var ideaMethods = new Idea('', '', id, '');
-    ideaMethods.deleteFromStorage();
+    // var deleteIdea = JSON.parse(localStorage.getItem(id));
+    var ideaDeleteMethods = new Idea('', '', id);
+    ideaDeleteMethods.deleteFromStorage();
     e.target.parentNode.parentNode.parentNode.remove();
   }
 });
 
 function instanceProperties() {
-  var idea = new Idea(titleInput.value, bodyInput.value);
-  idea.setToStorage(); 
-  populateIdeaCard(idea);
+  var newIdea = new Idea(titleInput.value, bodyInput.value);
+  newIdea.setToStorage(); 
+  populateIdeaCard(newIdea);
 }
 
 function reloadCards() {
@@ -40,12 +41,19 @@ function reloadCards() {
   });
 };
 
-document.querySelector('.upvote-icon').addEventListener('click', function(index) {
-    var assignedValue = new Idea();
-    assignedValue.updateQuality();
-    
-    console.log(assignedValue);
-  });
+//function to update quality
+document.getElementById('card-article').addEventListener('click', function(e){
+  if (e.target.className === 'icon-size upvote-icon') {
+    var id = e.target.parentNode.parentNode.parentNode.children[0].dataset.index;
+
+    var idea = JSON.parse(localStorage.getItem(id));
+
+    var ideaQualityMethods = new Idea(titleInput.value, bodyInput.value);
+    // ideaQualityMethods.updateQuality();
+
+    console.log(idea);
+  }
+});
 
 // function to create card
 function populateIdeaCard(idea) {
@@ -57,12 +65,13 @@ function populateIdeaCard(idea) {
         <h2 class="idea-title">${idea.title}</h2>
         <h4 class="idea-body">${idea.body}</h4>
       </div>
+
       <footer>
         <div class="vote">
           <img class="icon-size downvote-icon"src="images/downvote.svg">
           <img class="icon-size upvote-icon" src="images/upvote.svg">
           <span class="quality-text">Quality:&nbsp;</span>
-          <span class="quality-category">${idea.quality[0]}</span>
+          <span class="quality-category">${qualityArray[0]}</span>
         </div>
         <div class="delete">
           <img class="icon-size delete-icon" src="images/delete.svg">
