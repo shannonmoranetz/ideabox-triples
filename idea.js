@@ -18,8 +18,10 @@ class Idea {
     var qualityArray = ['Swill', 'Plausible', 'Genius'];
     if (direction === 'up' && this.quality < 2) {
       this.quality++;
+    } else if (direction === 'down' && this.quality > 0) {
+      this.quality--;
+    }
       this.setToStorage();
-    } 
       return qualityArray[this.quality];
   }
 

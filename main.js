@@ -46,13 +46,18 @@ document.getElementById('card-article').addEventListener('click', function(e){
     var idea = JSON.parse(localStorage.getItem(id));
     var ideaQuality = new Idea(idea.title, idea.body, idea.id, idea.quality);
     e.target.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('up');
-    // console.log(ideaQuality);
   }
 });
 
 // function to DOWNvote quality
-
-
+document.getElementById('card-article').addEventListener('click', function(e){
+  if (e.target.className === 'icon-size downvote-icon') {
+    var id = e.target.closest('.idea-card').dataset.index;
+    var idea = JSON.parse(localStorage.getItem(id));
+    var ideaQuality = new Idea(idea.title, idea.body, idea.id, idea.quality);
+    e.target.nextElementSibling.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('down');
+  }
+});
 
 // function to create card
 function populateIdeaCard(idea) {
