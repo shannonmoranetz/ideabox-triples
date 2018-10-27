@@ -3,7 +3,7 @@ class Idea {
     this.id = id || Date.now();
     this.title = title;
     this.body = body;
-    this.quality = quality || 0;
+    this.quality = ['Swill', 'Plausible', 'Genius'];
   }
 
   setToStorage() {
@@ -15,22 +15,20 @@ class Idea {
   } 
 
   updateQuality(quality) {
-    if (this.quality[0]) {
-      console.log(this.quality[1]);
-      return this.quality[1];
-    } 
-    else if (this.quality[1]) {
-      return this.quality[2];
-      console.log(this.quality[2]);
-    } else {
-      return;
+    console.log(this.quality);
+    if (this.quality === 'Swill') {
+      this.quality = 'Plausible';
+      console.log('fire')
     }
-    // this.quality[quality]++;
-    // this.assignedQuality.quality++;
+    else if (this.quality === 'Plausible') {
+      this.quality = 'Genius';
+      console.log('hi')
+
+    }
   }
 
-// updateSelf
 
+// updateSelf
 
 };
 
