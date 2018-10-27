@@ -3,7 +3,7 @@ class Idea {
     this.id = id || Date.now();
     this.title = title;
     this.body = body;
-    this.quality = ['Swill', 'Plausible', 'Genius'];
+    this.quality = quality || 0;
   }
 
   setToStorage() {
@@ -14,17 +14,13 @@ class Idea {
     localStorage.removeItem(this.id);
   } 
 
-  updateQuality(quality) {
-    console.log(this.quality);
-    if (this.quality === 'Swill') {
-      this.quality = 'Plausible';
-      console.log('fire')
-    }
-    else if (this.quality === 'Plausible') {
-      this.quality = 'Genius';
-      console.log('hi')
-
-    }
+  updateQuality(direction) {
+    var qualityArray = ['Swill', 'Plausible', 'Genius'];
+    if (direction === 'up' && this.quality < 2) {
+      this.quality++;
+      this.setToStorage();
+    } 
+      return qualityArray[this.quality];
   }
 
 

@@ -39,23 +39,25 @@ function reloadCards() {
   });
 };
 
-// function to update quality
+// function to UPvote quality
 document.getElementById('card-article').addEventListener('click', function(e){
   if (e.target.className === 'icon-size upvote-icon') {
     var id = e.target.closest('.idea-card').dataset.index;
     var idea = JSON.parse(localStorage.getItem(id));
-    var ideaQualityMethods = new Idea(idea.title, idea.body, idea.id, idea.quality);
-    ideaQualityMethods.updateQuality();
-    e.target.nextElementSibling.innerText = 
-    console.log(ideaQualityMethods);
+    var ideaQuality = new Idea(idea.title, idea.body, idea.id, idea.quality);
+    e.target.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('up');
+    // console.log(ideaQuality);
   }
 });
+
+// function to DOWNvote quality
 
 
 
 // function to create card
 function populateIdeaCard(idea) {
   var card = document.createElement('section');
+  var qualityArray = ['Swill', 'Plausible', 'Genius'];
   var cardArticle = document.getElementById('card-article');
   card.className = 'idea-card';
   card.dataset.index =  idea.id;
@@ -70,7 +72,7 @@ function populateIdeaCard(idea) {
           <img class="icon-size downvote-icon"src="images/downvote.svg">
           <img class="icon-size upvote-icon" src="images/upvote.svg">
           <span class="quality-text">Quality:&nbsp;</span>
-          <span class="quality-category">${idea.quality}</span>
+          <span class="quality-category">${qualityArray[idea.quality]}</span>
         </div>
         <div class="delete">
           <img class="icon-size delete-icon" src="images/delete.svg">
