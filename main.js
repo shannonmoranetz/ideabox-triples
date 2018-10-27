@@ -5,6 +5,7 @@ var ideaForm = document.querySelector('.idea-form');
 
 reloadCards();
 
+
 // click save button
 document.querySelector('.save-button').addEventListener('click', function(e){
   e.preventDefault();
@@ -23,7 +24,7 @@ document.getElementById('card-article').addEventListener('click', function(e) {
     var ideaDeleteMethods = new Idea('', '', id);
     ideaDeleteMethods.deleteFromStorage();
     e.target.closest('.idea-card').remove();
-    }
+  }
 });
 
 function instanceProperties() {
@@ -35,7 +36,7 @@ function instanceProperties() {
 function reloadCards() {
   ideaForm.reset();
   Object.keys(localStorage).forEach(function(key){
-  populateIdeaCard(JSON.parse(localStorage.getItem(key)));
+    populateIdeaCard(JSON.parse(localStorage.getItem(key)));
   });
 };
 
@@ -59,6 +60,14 @@ document.getElementById('card-article').addEventListener('click', function(e){
   }
 });
 
+document.querySelector('.idea-title').addEventListener('blur', function(e) {
+    var id = e.target.closest('.idea-card').dataset.index;
+    var idea = JSON.parse(localStorage.getItem(id));
+    var titleEdit = new Idea();  //titleInput assigns empty string
+    titleEdit.setToStorage();
+    console.log(titleEdit);
+});
+
 // function to create card
 function populateIdeaCard(idea) {
   var card = document.createElement('section');
@@ -67,23 +76,23 @@ function populateIdeaCard(idea) {
   card.className = 'idea-card';
   card.dataset.index =  idea.id;
   card.innerHTML = 
-    ` <div class="card-content">
-        <h2 class="idea-title">${idea.title}</h2>
-        <h4 class="idea-body">${idea.body}</h4>
-      </div>
+  ` <div class="card-content">
+  <h2 class="idea-title "contenteditable= "true">${idea.title}</h2>
+  <h4 class="idea-body" contenteditable="true">${idea.body}</h4>
+  </div>
 
-      <footer>
-        <div class="vote">
-          <img class="icon-size downvote-icon"src="images/downvote.svg">
-          <img class="icon-size upvote-icon" src="images/upvote.svg">
-          <span class="quality-text">Quality:&nbsp;</span>
-          <span class="quality-category">${qualityArray[idea.quality]}</span>
-        </div>
-        <div class="delete">
-          <img class="icon-size delete-icon" src="images/delete.svg">
-        </div>
-      </footer> `;
-    cardArticle.appendChild(card);
+  <footer>
+  <div class="vote">
+  <img class="icon-size downvote-icon"src="images/downvote.svg">
+  <img class="icon-size upvote-icon" src="images/upvote.svg">
+  <span class="quality-text">Quality:&nbsp;</span>
+  <span class="quality-category">${qualityArray[idea.quality]}</span>
+  </div>
+  <div class="delete">
+  <img class="icon-size delete-icon" src="images/delete.svg">
+  </div>
+  </footer> `;
+  cardArticle.appendChild(card);
 }
 
 //  indexOf 

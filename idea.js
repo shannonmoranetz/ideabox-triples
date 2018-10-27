@@ -21,10 +21,9 @@ class Idea {
     } else if (direction === 'down' && this.quality > 0) {
       this.quality--;
     }
-      this.setToStorage();
-      return qualityArray[this.quality];
+    this.setToStorage();
+    return qualityArray[this.quality];
   }
-
 
 // updateSelf
 
