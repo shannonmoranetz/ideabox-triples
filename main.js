@@ -2,8 +2,10 @@
 var titleInput = document.getElementById('title-input');
 var bodyInput = document.getElementById('body-input');
 var ideaForm = document.querySelector('.idea-form');
+var saveButton = document.querySelector('.save-button');
 
 reloadCards();
+saveButton.disabled = true;
 
 
 // click save button
@@ -12,6 +14,18 @@ document.querySelector('.save-button').addEventListener('click', function(e){
   instanceProperties();
   ideaForm.reset();
 });
+
+// 
+
+titleInput.addEventListener('keyup', function(){
+    if (titleInput === '') {
+      saveButton.disabled = true;
+    } else {
+     saveButton.disabled = false;
+    }
+  });
+
+
 
 // click delete button
 document.getElementById('card-article').addEventListener('click', function(e) {
@@ -49,9 +63,10 @@ document.getElementById('card-article').addEventListener('focusout', function(e)
   if (e.target.className === 'idea-body') {
     var id = e.target.closest('.idea-card').dataset.index;
     var idea = JSON.parse(localStorage.getItem(id));
-    var titleEdit = new Idea(e.target.previousElementSibling.innerText, e.target.innerText, id, idea.quality);
+    var bodyEdit = new Idea(e.target.previousElementSibling.innerText, e.target.innerText, id, idea.quality);
   }
   titleEdit.setToStorage();
+  bodyEdit.setToStorage();
 });
 
 function reloadCards() {

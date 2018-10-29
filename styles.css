@@ -104,6 +104,10 @@ label {
   cursor: pointer;
 }
 
+.save-button:disabled {
+  background-color: #808080;
+}
+
 /* article */
 
 article {
