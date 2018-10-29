@@ -25,7 +25,9 @@ class Idea {
     return qualityArray[this.quality];
   }
 
-// updateSelf
+  updateSelf() {
+    
+  }
 
 };
 

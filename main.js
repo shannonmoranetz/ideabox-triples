@@ -13,10 +13,6 @@ document.querySelector('.save-button').addEventListener('click', function(e){
   ideaForm.reset();
 });
 
-// event listeners on up/down votes 
-// change the index of the qualityArray
-
-
 // click delete button
 document.getElementById('card-article').addEventListener('click', function(e) {
   if (e.target.className === 'icon-size delete-icon') {
@@ -27,20 +23,7 @@ document.getElementById('card-article').addEventListener('click', function(e) {
   }
 });
 
-function instanceProperties() {
-  var newIdea = new Idea(titleInput.value, bodyInput.value);
-  newIdea.setToStorage(); 
-  populateIdeaCard(newIdea);
-}
-
-function reloadCards() {
-  ideaForm.reset();
-  Object.keys(localStorage).forEach(function(key){
-    populateIdeaCard(JSON.parse(localStorage.getItem(key)));
-  });
-};
-
-// function to UPvote quality
+// update quality 
 document.getElementById('card-article').addEventListener('click', function(e){
   if (e.target.className === 'icon-size upvote-icon') {
     var id = e.target.closest('.idea-card').dataset.index;
@@ -48,10 +31,6 @@ document.getElementById('card-article').addEventListener('click', function(e){
     var ideaQuality = new Idea(idea.title, idea.body, idea.id, idea.quality);
     e.target.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('up');
   }
-});
-
-// function to DOWNvote quality
-document.getElementById('card-article').addEventListener('click', function(e){
   if (e.target.className === 'icon-size downvote-icon') {
     var id = e.target.closest('.idea-card').dataset.index;
     var idea = JSON.parse(localStorage.getItem(id));
@@ -60,13 +39,33 @@ document.getElementById('card-article').addEventListener('click', function(e){
   }
 });
 
-document.querySelector('.idea-title').addEventListener('blur', function(e) {
+// edit idea
+document.getElementById('card-article').addEventListener('focusout', function(e) {
+  if (e.target.className === 'idea-title') {
     var id = e.target.closest('.idea-card').dataset.index;
     var idea = JSON.parse(localStorage.getItem(id));
-    var titleEdit = new Idea();  //titleInput assigns empty string
-    titleEdit.setToStorage();
-    console.log(titleEdit);
+    var titleEdit = new Idea(e.target.innerText, e.target.nextElementSibling.innerText, id, idea.quality);
+  }
+  if (e.target.className === 'idea-body') {
+    var id = e.target.closest('.idea-card').dataset.index;
+    var idea = JSON.parse(localStorage.getItem(id));
+    var titleEdit = new Idea(e.target.previousElementSibling.innerText, e.target.innerText, id, idea.quality);
+  }
+  titleEdit.setToStorage();
 });
+
+function reloadCards() {
+  ideaForm.reset();
+  Object.keys(localStorage).forEach(function(key){
+    populateIdeaCard(JSON.parse(localStorage.getItem(key)));
+  });
+};
+
+function instanceProperties() {
+  var newIdea = new Idea(titleInput.value, bodyInput.value);
+  newIdea.setToStorage(); 
+  populateIdeaCard(newIdea);
+}
 
 // function to create card
 function populateIdeaCard(idea) {
@@ -77,7 +76,7 @@ function populateIdeaCard(idea) {
   card.dataset.index =  idea.id;
   card.innerHTML = 
   ` <div class="card-content">
-  <h2 class="idea-title "contenteditable= "true">${idea.title}</h2>
+  <h2 class="idea-title" contenteditable= "true">${idea.title}</h2>
   <h4 class="idea-body" contenteditable="true">${idea.body}</h4>
   </div>
 
