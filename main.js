@@ -1,14 +1,13 @@
 // global variables 
 var titleInput = document.getElementById('title-input');
 var bodyInput = document.getElementById('body-input');
-var saveButton = document.querySelector('.save-button');
 var ideaForm = document.querySelector('.idea-form');
-
 
 reloadCards();
 
+
 // click save button
-saveButton.addEventListener('click', function(e){
+document.querySelector('.save-button').addEventListener('click', function(e){
   e.preventDefault();
   instanceProperties();
   ideaForm.reset();
@@ -17,49 +16,82 @@ saveButton.addEventListener('click', function(e){
 // click delete button
 document.getElementById('card-article').addEventListener('click', function(e) {
   if (e.target.className === 'icon-size delete-icon') {
-    var id = e.target.parentNode.parentNode.parentNode.children[0].dataset.index;
-    var idea = JSON.parse(localStorage.getItem(id));
-    var ideaMethods = new Idea('', '', id);
-    ideaMethods.deleteFromStorage();
-    e.target.parentNode.parentNode.parentNode.remove();
+    var id = e.target.closest('.idea-card').dataset.index;
+    var ideaDeleteMethods = new Idea('', '', id);
+    ideaDeleteMethods.deleteFromStorage();
+    e.target.closest('.idea-card').remove();
   }
 });
 
-function instanceProperties() {
-  var idea = new Idea(titleInput.value, bodyInput.value);
-  idea.setToStorage(); 
-  populateIdeaCard(idea);
-}
+// update quality 
+document.getElementById('card-article').addEventListener('click', function(e){
+  if (e.target.className === 'icon-size upvote-icon') {
+    var id = e.target.closest('.idea-card').dataset.index;
+    var idea = JSON.parse(localStorage.getItem(id));
+    var ideaQuality = new Idea(idea.title, idea.body, idea.id, idea.quality);
+    e.target.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('up');
+  }
+  if (e.target.className === 'icon-size downvote-icon') {
+    var id = e.target.closest('.idea-card').dataset.index;
+    var idea = JSON.parse(localStorage.getItem(id));
+    var ideaQuality = new Idea(idea.title, idea.body, idea.id, idea.quality);
+    e.target.nextElementSibling.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('down');
+  }
+});
+
+// edit idea
+document.getElementById('card-article').addEventListener('focusout', function(e) {
+  if (e.target.className === 'idea-title') {
+    var id = e.target.closest('.idea-card').dataset.index;
+    var idea = JSON.parse(localStorage.getItem(id));
+    var titleEdit = new Idea(e.target.innerText, e.target.nextElementSibling.innerText, id, idea.quality);
+  }
+  if (e.target.className === 'idea-body') {
+    var id = e.target.closest('.idea-card').dataset.index;
+    var idea = JSON.parse(localStorage.getItem(id));
+    var titleEdit = new Idea(e.target.previousElementSibling.innerText, e.target.innerText, id, idea.quality);
+  }
+  titleEdit.setToStorage();
+});
 
 function reloadCards() {
   ideaForm.reset();
   Object.keys(localStorage).forEach(function(key){
-  populateIdeaCard(JSON.parse(localStorage.getItem(key)));
+    populateIdeaCard(JSON.parse(localStorage.getItem(key)));
   });
 };
+
+function instanceProperties() {
+  var newIdea = new Idea(titleInput.value, bodyInput.value);
+  newIdea.setToStorage(); 
+  populateIdeaCard(newIdea);
+}
 
 // function to create card
 function populateIdeaCard(idea) {
   var card = document.createElement('section');
+  var qualityArray = ['Swill', 'Plausible', 'Genius'];
   var cardArticle = document.getElementById('card-article');
   card.className = 'idea-card';
+  card.dataset.index =  idea.id;
   card.innerHTML = 
-    ` <div class="card-content" data-index=${idea.id}>
-        <h2 class="idea-title">${idea.title}</h2>
-        <h4 class="idea-body">${idea.body}</h4>
-      </div>
-      <footer>
-        <div class="vote">
-          <img class="icon-size downvote-icon"src="images/downvote.svg">
-          <img class="icon-size" src="images/upvote.svg">
-          <span class="quality-text">Quality:&nbsp;</span>
-          <span class="quality-category">Swill</span>
-        </div>
-        <div class="delete">
-          <img class="icon-size delete-icon" src="images/delete.svg">
-        </div>
-      </footer> `;
-    cardArticle.appendChild(card);
+  ` <div class="card-content">
+  <h2 class="idea-title" contenteditable= "true">${idea.title}</h2>
+  <h4 class="idea-body" contenteditable="true">${idea.body}</h4>
+  </div>
+
+  <footer>
+  <div class="vote">
+  <img class="icon-size downvote-icon"src="images/downvote.svg">
+  <img class="icon-size upvote-icon" src="images/upvote.svg">
+  <span class="quality-text">Quality:&nbsp;</span>
+  <span class="quality-category">${qualityArray[idea.quality]}</span>
+  </div>
+  <div class="delete">
+  <img class="icon-size delete-icon" src="images/delete.svg">
+  </div>
+  </footer> `;
+  cardArticle.appendChild(card);
 }
 
 //  indexOf 

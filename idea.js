@@ -1,10 +1,10 @@
 class Idea {
-  constructor(title, body, id) {
+  constructor(title, body, id, quality) {
     this.id = id || Date.now();
     this.title = title;
     this.body = body;
-    this.quality = 'Swill';
-  } 
+    this.quality = quality || 0;
+  }
 
   setToStorage() {
     localStorage.setItem(this.id, JSON.stringify(this));
@@ -14,9 +14,20 @@ class Idea {
     localStorage.removeItem(this.id);
   } 
 
-// updateSelf
+  updateQuality(direction) {
+    var qualityArray = ['Swill', 'Plausible', 'Genius'];
+    if (direction === 'up' && this.quality < 2) {
+      this.quality++;
+    } else if (direction === 'down' && this.quality > 0) {
+      this.quality--;
+    }
+    this.setToStorage();
+    return qualityArray[this.quality];
+  }
 
-// updateQuality
+  updateSelf() {
+    
+  }
 
 };
 
