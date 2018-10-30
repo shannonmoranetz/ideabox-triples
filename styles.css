@@ -4,6 +4,10 @@
   padding: 0px;
 }
 
+.display-mode-none {
+  display: none;
+}
+
 /* nav bar */
 nav {
   background-color: #524649;

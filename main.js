@@ -82,6 +82,29 @@ function instanceProperties() {
   populateIdeaCard(newIdea);
 }
 
+
+// Event listener for the search bar
+document.getElementById('search-input').addEventListener('keyup', searchFilter);
+
+// function to filter ideas
+function searchFilter() {
+  Object.keys(localStorage).forEach(function(cardObj, index) {
+    let matchingCardsObject = document.getElementById(`${JSON.parse(localStorage[cardObj]).id}`);
+    let matchingCards = matchingCardsObject.parentNode.parentNode;
+    let localStorageTitle = JSON.parse(localStorage[cardObj]).title;
+    let localStorageBody = JSON.parse(localStorage[cardObj]).body;
+    let searchInput = document.getElementById('search-input').value;
+
+    if (!localStorageTitle.toLowerCase().includes(searchInput) && !localStorageBody.toLowerCase().includes(searchInput)) {
+      matchingCards.classList.add('display-mode-none')
+    } else if (localStorageTitle.toLowerCase().includes(searchInput) && localStorageBody.toLowerCase().includes(searchInput)) {
+      matchingCards.classList.remove('display-mode-none')
+    }
+  });
+}
+
+
+
 // function to create card
 function populateIdeaCard(idea) {
   var card = document.createElement('section');
@@ -91,7 +114,7 @@ function populateIdeaCard(idea) {
   card.dataset.index =  idea.id;
   card.innerHTML = 
   ` <div class="card-content">
-  <h2 class="idea-title" contenteditable= "true">${idea.title}</h2>
+  <h2 class="idea-title" id="${idea.id}" contenteditable= "true">${idea.title}</h2>
   <h4 class="idea-body" contenteditable="true">${idea.body}</h4>
   </div>
 
@@ -109,7 +132,6 @@ function populateIdeaCard(idea) {
   cardArticle.appendChild(card);
 }
 
-//  indexOf 
 //  get elements by tag name (document selector) for all the articles 
 //  use a for loop iterates over every section using indexOf and 
 //  it's case sensitive so make sure everything is lowercase 
