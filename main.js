@@ -59,14 +59,14 @@ document.getElementById('card-article').addEventListener('focusout', function(e)
     var id = e.target.closest('.idea-card').dataset.index;
     var idea = JSON.parse(localStorage.getItem(id));
     var titleEdit = new Idea(e.target.innerText, e.target.nextElementSibling.innerText, id, idea.quality);
+    titleEdit.updateSelf();
   }
   if (e.target.className === 'idea-body') {
     var id = e.target.closest('.idea-card').dataset.index;
     var idea = JSON.parse(localStorage.getItem(id));
     var bodyEdit = new Idea(e.target.previousElementSibling.innerText, e.target.innerText, id, idea.quality);
+    bodyEdit.updateSelf();
   }
-  titleEdit.setToStorage();
-  bodyEdit.setToStorage();
 });
 
 function reloadCards() {
@@ -88,7 +88,7 @@ document.getElementById('search-input').addEventListener('keyup', searchFilter);
 
 // function to filter ideas
 function searchFilter() {
-  Object.keys(localStorage).forEach(function(cardObj, index) {
+  Object.keys(localStorage).forEach(function(cardObj) {
     let matchingCardsObject = document.getElementById(`${JSON.parse(localStorage[cardObj]).id}`);
     let matchingCards = matchingCardsObject.parentNode.parentNode;
     let localStorageTitle = JSON.parse(localStorage[cardObj]).title;
@@ -129,7 +129,7 @@ function populateIdeaCard(idea) {
   <img class="icon-size delete-icon" src="images/delete.svg">
   </div>
   </footer> `;
-  cardArticle.appendChild(card);
+  cardArticle.insertBefore(card, cardArticle.firstChild); 
 }
 
 //  get elements by tag name (document selector) for all the articles 

@@ -24,15 +24,12 @@ class Idea {
     this.setToStorage();
     return qualityArray[this.quality];
   }
-
-  // updateSelf() {
-  //   var newTextInputValue =
-
-  //   this.setToStorage();
-
-  // }
-
+updateSelf() {
+  this.setToStorage();
+  }
 };
+
+// look into combining edit idea function into one function that passes into idea class via params
 
 // utilize debugger!! to stop function in it's tracks 
 // and see where the methods aren't being used anymore
