@@ -2,8 +2,10 @@
 var titleInput = document.getElementById('title-input');
 var bodyInput = document.getElementById('body-input');
 var ideaForm = document.querySelector('.idea-form');
+var saveButton = document.querySelector('.save-button');
 
 reloadCards();
+saveButton.disabled = true;
 
 
 // click save button
@@ -12,6 +14,18 @@ document.querySelector('.save-button').addEventListener('click', function(e){
   instanceProperties();
   ideaForm.reset();
 });
+
+// 
+
+titleInput.addEventListener('keyup', function(){
+    if (titleInput === '') {
+      saveButton.disabled = true;
+    } else {
+     saveButton.disabled = false;
+    }
+  });
+
+
 
 // click delete button
 document.getElementById('card-article').addEventListener('click', function(e) {
@@ -49,9 +63,10 @@ document.getElementById('card-article').addEventListener('focusout', function(e)
   if (e.target.className === 'idea-body') {
     var id = e.target.closest('.idea-card').dataset.index;
     var idea = JSON.parse(localStorage.getItem(id));
-    var titleEdit = new Idea(e.target.previousElementSibling.innerText, e.target.innerText, id, idea.quality);
+    var bodyEdit = new Idea(e.target.previousElementSibling.innerText, e.target.innerText, id, idea.quality);
   }
   titleEdit.setToStorage();
+  bodyEdit.setToStorage();
 });
 
 function reloadCards() {
@@ -67,6 +82,29 @@ function instanceProperties() {
   populateIdeaCard(newIdea);
 }
 
+
+// Event listener for the search bar
+document.getElementById('search-input').addEventListener('keyup', searchFilter);
+
+// function to filter ideas
+function searchFilter() {
+  Object.keys(localStorage).forEach(function(cardObj, index) {
+    let matchingCardsObject = document.getElementById(`${JSON.parse(localStorage[cardObj]).id}`);
+    let matchingCards = matchingCardsObject.parentNode.parentNode;
+    let localStorageTitle = JSON.parse(localStorage[cardObj]).title;
+    let localStorageBody = JSON.parse(localStorage[cardObj]).body;
+    let searchInput = document.getElementById('search-input').value;
+
+    if (!localStorageTitle.toLowerCase().includes(searchInput) && !localStorageBody.toLowerCase().includes(searchInput)) {
+      matchingCards.classList.add('display-mode-none')
+    } else if (localStorageTitle.toLowerCase().includes(searchInput) && localStorageBody.toLowerCase().includes(searchInput)) {
+      matchingCards.classList.remove('display-mode-none')
+    }
+  });
+}
+
+
+
 // function to create card
 function populateIdeaCard(idea) {
   var card = document.createElement('section');
@@ -76,7 +114,7 @@ function populateIdeaCard(idea) {
   card.dataset.index =  idea.id;
   card.innerHTML = 
   ` <div class="card-content">
-  <h2 class="idea-title" contenteditable= "true">${idea.title}</h2>
+  <h2 class="idea-title" id="${idea.id}" contenteditable= "true">${idea.title}</h2>
   <h4 class="idea-body" contenteditable="true">${idea.body}</h4>
   </div>
 
@@ -94,7 +132,6 @@ function populateIdeaCard(idea) {
   cardArticle.appendChild(card);
 }
 
-//  indexOf 
 //  get elements by tag name (document selector) for all the articles 
 //  use a for loop iterates over every section using indexOf and 
 //  it's case sensitive so make sure everything is lowercase 

@@ -4,6 +4,10 @@
   padding: 0px;
 }
 
+.display-mode-none {
+  display: none;
+}
+
 /* nav bar */
 nav {
   background-color: #524649;
@@ -102,6 +106,10 @@ label {
 
 .save-button:hover {
   cursor: pointer;
+}
+
+.save-button:disabled {
+  background-color: #808080;
 }
 
 /* article */

@@ -25,9 +25,12 @@ class Idea {
     return qualityArray[this.quality];
   }
 
-  updateSelf() {
-    
-  }
+  // updateSelf() {
+  //   var newTextInputValue =
+
+  //   this.setToStorage();
+
+  // }
 
 };
 
