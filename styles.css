@@ -92,8 +92,7 @@ label {
   border-color: #d4d2d8;
 }
 
-.save-button {
-  width: 100%;
+.buttons{
   height: 4vh;
   background-color: #5E5C6B;
   border-radius: 5px;
@@ -104,20 +103,47 @@ label {
   margin-bottom: 20px;
 }
 
-.save-button:hover {
+.save-button {
+  width: 100%;
+}
+
+.buttons:hover {
   cursor: pointer;
 }
 
 .save-button:disabled {
   background-color: #808080;
 }
+.filter-button {
+  width: 33%;
+}
+
 
 /* article */
+.show-more-wrapper {
+  background-color: #F9F9FA; 
+}
+
+.show-more-button {
+  margin-left: 20%;
+  margin-top: 18px;
+  width: 60%;
+  margin-bottom: 20px;
+}
 
 article {
   background-color: #F9F9FA;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
+  max-height: 1580px;
+}
+
+.overflow {
+  overflow: hidden;
+}
+
+.hide-button {
+  display: none;
 }
 
 .idea-card {

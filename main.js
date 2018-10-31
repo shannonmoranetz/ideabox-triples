@@ -103,6 +103,21 @@ function searchFilter() {
   });
 }
 
+function qualityFilter() {
+  var qualityCategory = document.querySelectorAll('.quality-category');
+  var swillButtonText = document.querySelector('.swill');
+  var plausibleButtonText = document.querySelector('.plausible');
+  var geniusButtonText = document.querySelector('.genius');
+}
+
+document.querySelector('.show-more-button').addEventListener('click', function(e) {
+  if (e.target.className === 'show-more-button') {
+    e.target.classList.add('hide-button');
+    var getArticle = document.getElementById('card-article');
+    getArticle.classList.remove('overflow');
+  }
+})
+
 
 
 // function to create card
