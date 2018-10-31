@@ -1,13 +1,17 @@
 var titleInput = document.getElementById('title-input');
 var bodyInput = document.getElementById('body-input');
 
-document.getElementById('card-article').addEventListener('click', updateCardQuality)
-document.getElementById('card-article').addEventListener('click', removeCard) 
-document.getElementById('card-article').addEventListener('focusout', updateCardInputs) 
+document.getElementById('card-article').addEventListener('click', updateCardQuality);
+document.getElementById('card-article').addEventListener('click', removeCard);
+document.getElementById('card-article').addEventListener('focusout', updateCardInputs);
 document.getElementById('search-input').addEventListener('keyup', searchFilter);
 document.querySelector('.save-button').disabled = true;
-document.querySelector('.save-button').addEventListener('click', assignCardProperties)
-document.querySelector('.show-more-button').addEventListener('click', expandPage) 
+document.querySelector('.save-button').addEventListener('click', assignCardProperties);
+document.querySelector('.show-more-button').addEventListener('click', expandPage);
+document.querySelector('.genius-button').addEventListener('click', geniusFilter);
+document.querySelector('.swill-button').addEventListener('click', swillFilter);
+document.querySelector('.plausible-button').addEventListener('click', plausibleFilter);
+
 titleInput.addEventListener('keyup', disableButton)
 
 reloadCards();
@@ -82,6 +86,29 @@ function reloadCards() {
   })
 };
 
+
+function geniusFilter(e) {
+  e.preventDefault();
+  var qualityCategory = document.querySelectorAll('.quality-category');
+  var geniusButtonText = document.querySelector('.genius-button');
+    qualityCategory.forEach(function(qualityValue) {
+      if (qualityValue.innerText !== geniusButtonText.innerText) {
+        qualityValue.closest('.idea-card').classList.add('display-mode-none');
+      }
+    })
+};
+
+function plausibleFilter(e) {
+  e.preventDefault();
+  var qualityCategory = document.querySelectorAll('.quality-category');
+  var plausibleButtonText = document.querySelector('.plausible-button');
+    qualityCategory.forEach(function(qualityValue) {
+      if (qualityValue.innerText !== plausibleButtonText.innerText) {
+        qualityValue.closest('.idea-card').classList.add('display-mode-none');
+      }
+    })
+};
+
 function searchFilter() {
   Object.keys(localStorage).forEach(function(cardObj) {
     let matchingCardsObject = document.getElementById(`${JSON.parse(localStorage[cardObj]).id}`);
@@ -97,6 +124,17 @@ function searchFilter() {
   });
 }
 
+function swillFilter(e) {
+  e.preventDefault();
+  var qualityCategory = document.querySelectorAll('.quality-category');
+  var swillButtonText = document.querySelector('.swill-button');
+    qualityCategory.forEach(function(qualityValue) {
+      if (qualityValue.innerText !== swillButtonText.innerText) {
+        qualityValue.closest('.idea-card').classList.add('display-mode-none');
+      }
+    })
+};
+
 function updateCardInputs(e) {
   var id = e.target.closest('.idea-card').dataset.index;
   var parsedIdea = JSON.parse(localStorage.getItem(id));
@@ -110,25 +148,15 @@ function updateCardInputs(e) {
 };
 
 function updateCardQuality(e) {
-  var id = e.target.closest('.idea-card').dataset.index;
-  var idea = JSON.parse(localStorage.getItem(id));
-  var ideaQuality = new Idea(idea.title, idea.body, idea.id, idea.quality);
-    if (e.target.className === 'icon-size upvote-icon') {
-      e.target.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('up');
-    } 
-    if (e.target.className === 'icon-size downvote-icon') {
-      e.target.nextElementSibling.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('down');
+  if (e.target.closest('.idea-card') !== null) {
+    var id = e.target.closest('.idea-card').dataset.index;
+    var idea = JSON.parse(localStorage.getItem(id));
+    var ideaQuality = new Idea(idea.title, idea.body, idea.id, idea.quality);
+      if (e.target.className === 'icon-size upvote-icon') {
+        e.target.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('up');
+      } 
+      if (e.target.className === 'icon-size downvote-icon') {
+        e.target.nextElementSibling.nextElementSibling.nextElementSibling.innerText = ideaQuality.updateQuality('down');
+      }
     }
 };
-
-// document.querySelector('.swill').addEventListener('click', function(e) {
-//   var qualityCategory = document.querySelectorAll('.quality-category');
-//   var swillButtonText = document.querySelector('.swill');
-//   e.preventDefault();
-//   console.log(qualityCategory)
-//     qualityCategory.forEach(function(qualityValue) {
-//       if (document.querySelectorAll('.quality-category').innerText == swillButtonText.innerText) {
-//         qualityCategory.parentNode.parentNode.parentNode.classList.add('display-mode-none')
-//       }
-//     })
-// })
