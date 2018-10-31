@@ -57,16 +57,16 @@ document.getElementById('card-article').addEventListener('click', function(e){
 document.getElementById('card-article').addEventListener('focusout', function(e) {
   if (e.target.className === 'idea-title') {
     var id = e.target.closest('.idea-card').dataset.index;
-    var idea = JSON.parse(localStorage.getItem(id));
-    var titleEdit = new Idea(e.target.innerText, e.target.nextElementSibling.innerText, id, idea.quality);
+    var parsedIdea = JSON.parse(localStorage.getItem(id));
+    var idea = new Idea(parsedIdea.title, parsedIdea.body, id, parsedIdea.quality);
+    idea.updateSelf(e.target.innerText, 'title');
   }
   if (e.target.className === 'idea-body') {
     var id = e.target.closest('.idea-card').dataset.index;
-    var idea = JSON.parse(localStorage.getItem(id));
-    var bodyEdit = new Idea(e.target.previousElementSibling.innerText, e.target.innerText, id, idea.quality);
+    var parsedIdea = JSON.parse(localStorage.getItem(id));
+    var idea = new Idea(parsedIdea.title, parsedIdea.body, id, parsedIdea.quality);
+    idea.updateSelf(e.target.innerText, 'body');
   }
-  titleEdit.setToStorage();
-  bodyEdit.setToStorage();
 });
 
 function reloadCards() {
@@ -88,12 +88,12 @@ document.getElementById('search-input').addEventListener('keyup', searchFilter);
 
 // function to filter ideas
 function searchFilter() {
-  Object.keys(localStorage).forEach(function(cardObj, index) {
+  Object.keys(localStorage).forEach(function(cardObj) {
     let matchingCardsObject = document.getElementById(`${JSON.parse(localStorage[cardObj]).id}`);
     let matchingCards = matchingCardsObject.parentNode.parentNode;
     let localStorageTitle = JSON.parse(localStorage[cardObj]).title;
     let localStorageBody = JSON.parse(localStorage[cardObj]).body;
-    let searchInput = document.getElementById('search-input').value;
+    let searchInput = document.getElementById('search-input').value.toLowerCase();
 
     if (!localStorageTitle.toLowerCase().includes(searchInput) && !localStorageBody.toLowerCase().includes(searchInput)) {
       matchingCards.classList.add('display-mode-none')
@@ -129,7 +129,7 @@ function populateIdeaCard(idea) {
   <img class="icon-size delete-icon" src="images/delete.svg">
   </div>
   </footer> `;
-  cardArticle.appendChild(card);
+  cardArticle.insertBefore(card, cardArticle.firstChild); 
 }
 
 //  get elements by tag name (document selector) for all the articles 
