@@ -114,6 +114,11 @@ label {
 .save-button:disabled {
   background-color: #808080;
 }
+
+.filter-buttons-section {
+  display: flex;
+}
+
 .filter-button {
   width: 33%;
 }
@@ -122,6 +127,7 @@ label {
 /* article */
 .show-more-wrapper {
   background-color: #F9F9FA; 
+  height: -webkit-fill-available;
 }
 
 .show-more-button {
@@ -219,3 +225,35 @@ footer {
   cursor: pointer;
 }
 
+@media screen and (max-width: 800px) {
+  .filter-buttons-section {
+    flex-direction: column;
+  }
+  .filter-button {
+    width: 100%;
+  }
+  .idea-form {
+    grid-column: 1/4;
+    padding: 20px 15px 0px 15px;
+  }
+  .idea-card {
+    grid-column: 1/4; 
+    margin: 20px 15px 0px 15px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .page-title-purple {
+    padding-left: 0px;
+  }
+  .search-form {
+    width: 93%;
+    padding-top: 0px;
+  }
+
+}
