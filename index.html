@@ -26,13 +26,21 @@
         <input type="text" id="title-input">
       <label for="body-input">Body</label>
         <textarea type="text" id="body-input"></textarea>
-      <button type="submit" class="save-button">Save</button>
+      <button type="submit" class="save-button buttons">Save</button>
+      <div class="filter-buttons-section">
+        <button class="filter-button buttons swill">Swill</button>
+        <button class="filter-button buttons plausible">Plausible</button>
+        <button class="filter-button buttons genius">Genius</button>
+      </div>
     </form>
   </header>
 
     <!-- the card -->
-  <article id="card-article">
-  </article>
+  <div class="show-more-wrapper">
+    <article class="overflow" id="card-article">
+    </article>
+    <button class="show-more-button buttons">Show More</button>
+  </div>  
 <script type="text/javascript" src="idea.js"></script>
 <script type="text/javascript" src="main.js"></script>
 </body>

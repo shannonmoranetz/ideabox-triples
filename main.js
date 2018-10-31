@@ -103,6 +103,31 @@ function searchFilter() {
   });
 }
 
+document.querySelector('.swill').addEventListener('click', function(e) {
+  var qualityCategory = document.querySelectorAll('.quality-category');
+  var swillButtonText = document.querySelector('.swill');
+  e.preventDefault();
+  console.log(qualityCategory)
+    qualityCategory.forEach(function(qualityValue) {
+      if (document.querySelectorAll('.quality-category').innerText == swillButtonText.innerText) {
+        qualityCategory.parentNode.parentNode.parentNode.classList.add('display-mode-none')
+      }
+    })
+})
+
+  // var plausibleButtonText = document.querySelector('.plausible');
+  // var geniusButtonText = document.querySelector('.genius');
+  
+
+document.querySelector('.show-more-button').addEventListener('click', function(e) {
+  if (e.target.className === 'show-more-button buttons') {
+  console.log('fire')
+    e.target.classList.add('hide-button');
+    var getArticle = document.getElementById('card-article');
+    getArticle.classList.remove('overflow');
+  }
+})
+
 
 
 // function to create card
