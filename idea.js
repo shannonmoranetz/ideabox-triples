@@ -24,9 +24,16 @@ class Idea {
     this.setToStorage();
     return qualityArray[this.quality];
   }
-updateSelf() {
-  this.setToStorage();
+  updateSelf(text, type) {
+    if (type === 'title') {
+      this.title = text;
+    } 
+    if (type === 'body') {
+      this.body = text;
+    }
+    this.setToStorage();
   }
+  // utilize bracket notation 
 };
 
 // look into combining edit idea function into one function that passes into idea class via params
