@@ -4,6 +4,10 @@
   padding: 0px;
 }
 
+body {
+  background-color: #F9F9FA;
+}
+
 .display-mode-none {
   display: none;
 }
@@ -33,16 +37,17 @@ nav {
 }
 
 #search-input {
-  border: none;
   border-radius: 5px 0px 0px 5px;
-  width: 100%;
+  border: none;
   color: #8A8494;
+  outline-color: #afa5cd;
+  width: 100%;
 }
 
 .search-button {
   background-color: #C2C1C0;
-  border: none;
   border-radius: 0px 5px 5px 0px;
+  border: none;
 }
 
 .search-button:hover {
@@ -54,8 +59,7 @@ nav {
   padding: 6px;
 }
 
-/* header */
-
+/* create new card section */
 header {
   background-color: #EAEAEA;
   display: grid;
@@ -68,28 +72,27 @@ label {
 }
 
 .idea-form {
-  padding-top: 20px;
   grid-column: 2/3;
+  padding-top: 20px;
 }
 
+
 #title-input {
-  width: 100%;
   height: 4vh;
-  margin-bottom: 18px;
-  margin-top: 5px;
-  border-radius: 5px;
-  border-style: solid;
-  border-color: #d4d2d8;
+  border-width: 1px; 
 }
 
 #body-input {
-  width: 100%;
   height: 8vh;
+}
+
+.inputs {
+  border: solid 1px #d4d2d8;
+  border-radius: 5px;
   margin-bottom: 18px;
   margin-top: 5px;
-  border-radius: 5px;
-  border-style: solid; 
-  border-color: #d4d2d8;
+  outline-color: #afa5cd;
+  width: 100%;
 }
 
 .buttons{
@@ -123,11 +126,9 @@ label {
   width: 33%;
 }
 
-
-/* article */
+/* card section */
 .show-more-wrapper {
   background-color: #F9F9FA; 
-  height: -webkit-fill-available;
 }
 
 .show-more-button {
@@ -138,10 +139,9 @@ label {
 }
 
 article {
-  background-color: #F9F9FA;
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  max-height: 1580px;
+  max-height: 1600px;
 }
 
 .overflow {
@@ -169,15 +169,15 @@ article {
   color: #6E646B;
   font-weight: 800;
   padding: 10px;
+  outline: none;
 }
 
 .idea-body {
   color: #7C7879;
   font-weight: 300;
   padding-left: 10px;
+  outline: none;
 }
-
-
 
 footer {
   display: flex;
@@ -201,19 +201,13 @@ footer {
   margin-left: 10px;
 }
 
-.downvote-icon:hover {
-  cursor: pointer;
-}
-
-.upvote-icon {
-  
-}
-
+.downvote-icon:hover, 
 .upvote-icon:hover {
   cursor: pointer;
 }
 
-.quality-text, .quality-category {
+.quality-text, 
+.quality-category {
   color: #7C7879;
   font-weight: 600;
   font-size: 14px;
@@ -255,5 +249,4 @@ footer {
     width: 93%;
     padding-top: 0px;
   }
-
 }
