@@ -157,12 +157,12 @@ article {
 }
 
 .idea-card {
-  grid-column: 2/3;
+  background-color: #FFFFFF;
   border-radius: 5px;
   border: solid 2px #d4d2d8; 
-  background-color: #FFFFFF;
-  margin: 18px 0px;
+  grid-column: 2/3;
   height: 14vh;
+  margin: 18px 0px;
 }
 
 .card-content {
@@ -172,15 +172,18 @@ article {
 .idea-title {
   color: #6E646B;
   font-weight: 800;
-  padding: 10px;
   outline: none;
+  padding: 10px;
 }
 
 .idea-body {
   color: #7C7879;
   font-weight: 300;
-  padding-left: 10px;
+  max-height: 20px;
+  max-width: 470px;
   outline: none;
+  overflow: scroll;
+  padding-left: 10px;
 }
 
 footer {
@@ -252,5 +255,20 @@ footer {
   .search-form {
     width: 93%;
     padding-top: 0px;
+  }
+  .idea-body {
+    padding-left: 4px;
+    overflow: scroll;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .idea-title {
+    padding: 4px;
+  }
+  .quality-text,
+  .quality-category {
+    font-size: 12px;
   }
 }

@@ -11,8 +11,7 @@ document.querySelector('.show-more-button').addEventListener('click', expandPage
 document.querySelector('.genius-button').addEventListener('click', geniusFilter);
 document.querySelector('.swill-button').addEventListener('click', swillFilter);
 document.querySelector('.plausible-button').addEventListener('click', plausibleFilter);
-
-titleInput.addEventListener('keyup', disableButton)
+titleInput.addEventListener('keyup', disableButton);
 
 reloadCards();
 
@@ -50,7 +49,7 @@ function populateIdeaCard(idea) {
   var qualityArray = ['Swill', 'Plausible', 'Genius'];
   var cardArticle = document.getElementById('card-article');
   card.className = 'idea-card';
-  card.dataset.index =  idea.id;
+  card.dataset.index = idea.id;
   card.innerHTML = 
     `<div class="card-content">
       <h2 class="idea-title" id="${idea.id}" contenteditable= "true">${idea.title}</h2>
@@ -85,7 +84,6 @@ function reloadCards() {
       populateIdeaCard(JSON.parse(localStorage.getItem(key)));
   })
 };
-
 
 function geniusFilter(e) {
   e.preventDefault();
