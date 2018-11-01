@@ -12,7 +12,7 @@ class Idea {
 
   deleteFromStorage() {
     localStorage.removeItem(this.id);
-  } 
+  };
 
   updateQuality(direction) {
     var qualityArray = ['Swill', 'Plausible', 'Genius'];
@@ -23,7 +23,8 @@ class Idea {
     }
     this.setToStorage();
     return qualityArray[this.quality];
-  }
+  };
+
   updateSelf(text, type) {
     if (type === 'title') {
       this.title = text;

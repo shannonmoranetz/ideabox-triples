@@ -96,12 +96,12 @@ label {
 }
 
 .buttons{
-  height: 4vh;
+  height: 5vh;
   background-color: #5E5C6B;
   border-radius: 5px;
   border-style: solid;
   color: #FFFFFF;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: 1px;
   margin-bottom: 20px;
 }
@@ -161,29 +161,26 @@ article {
   border-radius: 5px;
   border: solid 2px #d4d2d8; 
   grid-column: 2/3;
-  height: 14vh;
+  height: auto;
   margin: 18px 0px;
-}
-
-.card-content {
-  height: 10vh;
 }
 
 .idea-title {
   color: #6E646B;
   font-weight: 800;
   outline: none;
-  padding: 10px;
+  padding: 10px 0px 0px 10px;
 }
 
 .idea-body {
   color: #7C7879;
   font-weight: 300;
-  max-height: 20px;
+  max-height: 36px;
   max-width: 470px;
   outline: none;
   overflow: scroll;
-  padding-left: 10px;
+  margin: 10px;
+  padding: 1px;
 }
 
 footer {
@@ -191,6 +188,7 @@ footer {
   justify-content: space-between;
   border-top: solid 2px #d4d2d8;
   height: 4vh;
+  padding: 4px 0px;
 }
 
 .vote {
@@ -241,6 +239,12 @@ footer {
     grid-column: 1/4; 
     margin: 20px 15px 0px 15px;
   }
+  .idea-title {
+    padding: 10px 10px 6px 10px;
+  }
+  .idea-body {
+    overflow: scroll;
+  }
 }
 
 @media screen and (max-width: 550px) {
@@ -256,16 +260,14 @@ footer {
     width: 93%;
     padding-top: 0px;
   }
-  .idea-body {
-    padding-left: 4px;
-    overflow: scroll;
-    height: 20px;
-  }
 }
 
 @media screen and (max-width: 320px) {
   .idea-title {
-    padding: 4px;
+    padding: 4px 6px;
+  }
+  .idea-body {
+    padding-left: 6px;
   }
   .quality-text,
   .quality-category {
