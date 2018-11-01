@@ -145,7 +145,7 @@ label {
 article {
   display: grid;
   grid-template-columns: 1fr 3fr 1fr;
-  max-height: 1600px;
+  max-height: 1545px;
 }
 
 .overflow {
