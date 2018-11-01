@@ -14,7 +14,7 @@ The Ideabox application is supported on mobile devices up to 320px wide.
 
 ## Mobile Version
 
-![](ideabox-mobile.png)
+![](images/ideabox-mobile.png)
 
 ## Original Comp
 
