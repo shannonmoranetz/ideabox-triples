@@ -4,11 +4,11 @@ class Idea {
     this.title = title;
     this.body = body;
     this.quality = quality || 0;
-  }
+  };
 
   setToStorage() {
     localStorage.setItem(this.id, JSON.stringify(this));
-  }  
+  };
 
   deleteFromStorage() {
     localStorage.removeItem(this.id);
@@ -33,10 +33,4 @@ class Idea {
     }
     this.setToStorage();
   }
-  // utilize bracket notation 
 };
-
-// look into combining edit idea function into one function that passes into idea class via params
-
-// utilize debugger!! to stop function in it's tracks 
-// and see where the methods aren't being used anymore
