@@ -123,11 +123,12 @@ label {
 }
 
 .filter-button {
-  width: 33%;
+  width: 25%;
 }
 
 .reset-button {
   background-color: #afa5cd;
+  width: 25%;
 }
 
 /* card section */
