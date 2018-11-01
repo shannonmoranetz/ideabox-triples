@@ -119,7 +119,7 @@ function searchFilter() {
       } else if (localStorageTitle.toLowerCase().includes(searchInput) && localStorageBody.toLowerCase().includes(searchInput)) {
         matchingCards.classList.remove('display-mode-none');
       }
-  })
+    })
 };
 
 function swillFilter(e) {
