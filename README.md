@@ -1,21 +1,27 @@
-# Ideabox Triples
+# Ideabox
 
-This is a web application designed to store a user's ideas. An idea is made up a title, a body, and a quality value, all of which are created and stored locally within a separate class. The localStorage objects are retrieved and placed on the DOM accordingly. 
+## Track and sort idea notes
 
-Main funcationality includes: Creating and deleting ideas, manipulating the quality value, and filtering ideas via both a search and quality function. 
+* * *
 
-The Ideabox application is supported on mobile devices up to 320px wide. 
+### Write and keep track of your ideas via a card UI.
 
-## Desktop Version
+![Screenshot](https://i.imgur.com/eahyZcf.png)
 
-![](images/ideabox-empty.png)
+### Features
 
-![](images/ideabox-full.png)
+*   Editable title and body text
+*   Editable quality settings
+*   Filter controls
 
-## Mobile Version
+### Tech Stack
 
-![](images/ideabox-mobile.png)
+*   HTML
+*   CSS
+*   Javascript
 
-## Original Comp
+### Contributors
 
-![](images/ideabox-OG.jpg)
+* [Shannon Moranetz](https://github.com/shannonmoranetz)
+* [Whitney Burton](https://github.com/whitneyburton)
+* [Tim Miller](https://github.com/timmiller601)
